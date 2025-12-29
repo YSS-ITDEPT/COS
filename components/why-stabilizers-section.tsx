@@ -127,7 +127,7 @@ export function WhyStabilizersSection() {
   const challenges = [
     "Ordnance ages chemically even when unused",
     "Stabilizers inside propellants get depleted over time",
-    "Decomposition generates trace chemical vapours",
+    "Decomposition generates trace chemical's in the air",
     "These changes are often invisible until failure occurs",
   ]
 
@@ -253,7 +253,7 @@ export function WhyStabilizersSection() {
                 <div className="pt-6 border-t border-slate-200">
                   <p className="text-sm text-slate-500 mb-2 font-display">Our Solution</p>
                   <p className="text-base font-semibold text-[#0a1628] font-display">
-                    We assess ordnance safety by detecting and analysing trace chemical vapours in the surrounding
+                    We assess ordnance safety by detecting and analysing trace chemical's in the surrounding
                     air—non-invasively, in real time.
                   </p>
                 </div>

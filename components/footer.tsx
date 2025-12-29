@@ -64,8 +64,8 @@ export function Footer() {
                   alt="Canada Ordnance Safety"
                   className="h-46 w-auto mb-6 brightness-0 invert"
                 />
-                <p className="text-white/40 leading-relaxed max-w-md mb-8 font-display">
-                  Advanced vapour-phase chemical sensing for ordnance safety. Supporting safe lifecycle management of
+                <p className="text-white/80 leading-relaxed max-w-md mb-8 font-display text-lg">
+                  Advanced Trace Chemical Detection sensing for ordnance safety. Supporting safe lifecycle management of
                   energetic materials across Canada.
                 </p>
 
@@ -81,7 +81,7 @@ export function Footer() {
 
               {/* Quick links */}
                  <div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-white/30 mb-6 font-display">
+                <h4 className="text-xs font-bold uppercase tracking-widest text-white/80 mb-6 font-display">
                   Navigation
                 </h4>
            <nav className="flex flex-col gap-3">
@@ -108,9 +108,9 @@ export function Footer() {
 
               {/* Contact info */}
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-white/30 mb-6 font-display">Contact</h4>
+                <h4 className="text-xs font-bold uppercase tracking-widest text-white/80 mb-6 font-display">Contact</h4>
                 <div className="flex flex-col gap-4">
-                  <div className="flex items-center gap-3 text-white/40 text-sm font-display">
+                  <div className="flex items-center gap-3 text-white/60 text-sm font-display">
                     <div className="w-8 h-8 bg-white/5 flex items-center justify-center">
                       <Mail className="w-4 h-4 text-[#b91c1c]" />
                     </div>

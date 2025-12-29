@@ -128,7 +128,7 @@ export function StorageSection() {
       icon: Cpu,
       title: "Chemical Analysis",
       subtitle: "AACTS/IMS detection",
-      desc: "Vapour-phase detection of stabiliser markers and degradation indicators",
+      desc: "Trace Chemical Detection(TCD) of stabiliser markers and degradation indicators",
     },
     {
       icon: ShieldCheck,
@@ -401,7 +401,7 @@ export function StorageSection() {
                 </span>
               </div>
               <p className="text-lg text-white leading-relaxed mb-6">
-                Our technology samples ambient air around stored ordnance to detect trace chemical vapours linked to
+                Our technology samples ambient air around stored ordnance to detect trace chemical  linked to
                 early degradation—
                 <span className="text-white font-medium">
                   without any physical contact, disassembly, or disruption to storage operations.

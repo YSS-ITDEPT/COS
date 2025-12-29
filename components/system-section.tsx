@@ -153,7 +153,7 @@ export function SystemSection() {
 
               <p className="text-lg leading-relaxed text-[#0a1628]/60 mb-10 font-display">
                 The AACTS 3000 Analyzer employs Axial Ion Mobility Spectrometry (AIMS) for sensitive detection of
-                stabilizer vapors and chemical degradation indicators in air samples.
+                stabilizer's chemical degradation indicators in air samples.
               </p>
 
               {/* Specs Card - No Border Radius */}
@@ -260,7 +260,7 @@ export function SystemSection() {
                   <div>
                     <h4 className="text-[#0a1628] font-semibold mb-1 text-sm font-display">AACTS 3000 Analyzer</h4>
                     <p className="text-[#0a1628]/50 text-sm leading-relaxed font-display">
-                      For chemical analysis of stabilizer vapors and degradation indicators in energetic materials.
+                      For chemical analysis of stabilizer's  degradation indicators in energetic materials.
                     </p>
                   </div>
                 </div>

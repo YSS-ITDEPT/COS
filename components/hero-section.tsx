@@ -204,13 +204,13 @@ const createRipple = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>
                 ))}
               </h1>
               <p className="hero-subtitle text-xl md:text-2xl text-[#b91c1c] font-medium font-display overflow-hidden">
-                Non-Invasive. Vapour-Phase. Field-Deployable.
+                Non-Invasive. Air-Aspiration-Based. Field-Deployable.
               </p>
             </div>
 
             {/* Description */}
             <p className="hero-desc text-lg text-white/70 leading-relaxed max-w-xl font-display">
-              Advanced vapour-phase chemical sensing using AACTS/IMS technology for assessing ordnance stability and
+              Advanced Air aspiration based Trace chemical detection system for assessing ordnance stability and
               preventing accidents—without physical contact with stored munitions.
             </p>
 

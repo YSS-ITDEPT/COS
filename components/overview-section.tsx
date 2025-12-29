@@ -110,7 +110,7 @@ export function OverviewSection() {
     {
       icon: Target,
       title: "Chemical Analytics",
-      desc: "Advanced vapour-phase sensing derived from defence-grade platforms",
+      desc: "Patented Chemical Trace Detection System",
     },
     {
       icon: Crosshair,
