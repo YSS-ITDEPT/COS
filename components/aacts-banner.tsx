@@ -35,7 +35,7 @@ export function AACTSBanner() {
                 Advanced Air Composition & Traceability System
               </p>
               <p className="text-[#c8102e] text-xs lg:text-sm uppercase tracking-wider mt-2 font-medium">
-                Real-Time Vapor Detection Technology
+                Real-Time Vapor Detection Technology okay
               </p>
             </div>
           </div>
