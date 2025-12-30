@@ -210,7 +210,7 @@ const createRipple = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>
 
             {/* Description */}
             <p className="hero-desc text-lg text-white/70 leading-relaxed max-w-xl font-display">
-              Advanced Air aspiration based Trace chemical detection system for assessing ordnance stability and
+              Advanced Air aspiration based Trace Chemical Detection system for assessing ordnance stability and
               preventing accidents—without physical contact with stored munitions.
             </p>
 

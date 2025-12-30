@@ -5,6 +5,8 @@ import { CustomCursor } from "@/components/custom-cursor"
 import { TrafficTracker } from "@/components/traffic-tracker"
 import "./globals.css"
 import { PageLoader } from "@/components/page-loader"
+import Script from "next/script";
+
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -82,20 +84,24 @@ export const metadata: Metadata = {
 
   icons: {
     icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
+    {
+      url: "https://ik.imagekit.io/d9wt8plt0/coss.png",
+      sizes: "16x16",
+   type: "image/png",
+    },
+    {
+      url: "https://ik.imagekit.io/d9wt8plt0/coss.png",
+      sizes: "32x32",
+  type: "image/png",
+    },
+    {
+      url: "https://ik.imagekit.io/d9wt8plt0/coss.png",
+      sizes: "48x48",
+   type: "image/png",
+    },
+     
     ],
-    apple: "/apple-icon.png",
+    apple: "https://ik.imagekit.io/d9wt8plt0/coss.png",
   },
 }
 
@@ -107,6 +113,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body className="font-sans antialiased cursor-none">
+        <Script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+  strategy="afterInteractive"
+/>
+
         <CustomCursor />
         <TrafficTracker />
           <PageLoader />

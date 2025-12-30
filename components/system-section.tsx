@@ -73,7 +73,7 @@ export function SystemSection() {
 
   const metrics = [
     { label: "Sample Time", value: "1-3 min", description: "Rapid Analysis" },
-    { label: "Forensic Level", value: "99.7%", description: "Precision Testing" },
+    { label: "Detection Range", value: "ng-pg", description: "Nanogram to Picogram" },
     { label: "Scan Time", value: "20 sec", description: "Minimal Requirement" }
   ]
 

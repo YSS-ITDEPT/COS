@@ -10,6 +10,8 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { MapPin, Mail, Send, Clock, CheckCircle,Phone  } from "lucide-react"
+import { useId } from "react";
+
 
 export function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -25,6 +27,11 @@ export function ContactSection() {
     email: "",
     message: "",
   })
+
+  const [tsToken, setTsToken] = useState<string>("");
+  const widgetIdRef = useRef<string | null>(null);
+  const turnstileElId = useId().replace(/:/g, "");
+const [turnstileKey, setTurnstileKey] = useState(0);
 
   useEffect(() => {
     if (!isReady || !sectionRef.current) return
@@ -64,16 +71,58 @@ export function ContactSection() {
 
     return () => ctx.revert()
   }, [isReady])
+useEffect(() => {
+  const w = window as any;
+  let cancelled = false;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const render = () => {
+    if (cancelled) return;
+    if (!w.turnstile) return;
+
+    // IMPORTANT: if we re-mounted the container, render again
+    if (widgetIdRef.current) return;
+
+    widgetIdRef.current = w.turnstile.render(`#ts-${turnstileElId}`, {
+      sitekey: "0x4AAAAAACJnzGOWCZ_NF-dH",
+      theme: "light",
+      callback: (token: string) => setTsToken(token),
+      "expired-callback": () => setTsToken(""),
+      "error-callback": () => setTsToken(""),
+    });
+  };
+
+  render();
+  const t = setInterval(render, 300);
+
+  return () => {
+    cancelled = true;
+    clearInterval(t);
+
+    // IMPORTANT: remove widget on unmount so it can be rendered again
+    try {
+      if (w.turnstile && widgetIdRef.current) w.turnstile.remove(widgetIdRef.current);
+    } catch {}
+
+    widgetIdRef.current = null;
+  };
+}, [turnstileElId, turnstileKey]); // IMPORTANT: include turnstileKey
+
+
+const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
+
+  if (!tsToken) {
+    alert("Please complete the verification and try again.");
+    return;
+  }
+
   setIsSubmitting(true);
 
   try {
-    const res = await fetch("/api/contact.php", {
+    const res = await fetch("/cos/api/contact.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({ ...formData, turnstile_token: tsToken }),
     });
 
     const data = await res.json().catch(() => null);
@@ -83,17 +132,30 @@ export function ContactSection() {
     }
 
     setIsSubmitted(true);
+widgetIdRef.current = null;
+    // reset Turnstile token + widget
+    setTsToken("");
+    try {
+      const w = window as any;
+      if (w.turnstile && widgetIdRef.current) w.turnstile.reset(widgetIdRef.current);
+    } catch {}
 
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", organization: "", email: "", message: "" });
-    }, 6000);
+  setTimeout(() => {
+  setIsSubmitted(false);
+  setFormData({ name: "", organization: "", email: "", message: "" });
+
+  // IMPORTANT: force Turnstile container remount + re-render
+  setTurnstileKey((k) => k + 1);
+  setTsToken("");
+}, 6000);
+
   } catch (err: any) {
     alert(err?.message || "Unable to submit. Please try again.");
   } finally {
     setIsSubmitting(false);
   }
 };
+
 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -284,6 +346,13 @@ export function ContactSection() {
                       className="border-2 border-[#0B1F3B]/10 focus:border-[#b91c1c] rounded-none min-h-28 bg-white px-4 py-3 resize-none font-display transition-all duration-300 cursor-text"
                     />
                   </div>
+<div className="pt-2">
+ <div key={turnstileKey} id={`ts-${turnstileElId}`} />
+
+  <p className="text-xs text-[#0B1F3B]/50 mt-2 font-display">
+    This form is protected by Turnstile.
+  </p>
+</div>
 
                   <Button
                     type="submit"
